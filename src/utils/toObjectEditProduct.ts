@@ -1,5 +1,5 @@
 import { ObjectToEditProduct } from "../types";
-import { parseCurrency, parseObjectId, parsePositiveNumber, parsePrice } from "../parsers";
+import { parseCurrency, parseObjectId, parsePositiveNumber } from "../parsers";
 
 export function toObjectEditProduct({ _id, price, currency, volume, stock }: { _id: any, price: any, currency: any, volume: any, stock: any }): ObjectToEditProduct {
     let parsedId
@@ -15,7 +15,7 @@ export function toObjectEditProduct({ _id, price, currency, volume, stock }: { _
     return {
         _id: parsedId,
         ...(currency && { currency: parseCurrency(currency) }),
-        ...(price && { price: parsePrice(price) }),
+        ...(price && { price: parsePositiveNumber(price, 'price') }),
         ...(volume && { volume: parsePositiveNumber(volume, 'volume') }),
         ...(stock && { stock: parsePositiveNumber(stock, 'stock') })
     }

@@ -1,5 +1,3 @@
-export * from './parseName'
-export * from './parsePrice'
 export * from './parseCurrency'
 export * from './parseString'
 export * from './parseStringNotEmptyOrBlank'
