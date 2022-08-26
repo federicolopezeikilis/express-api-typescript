@@ -2,6 +2,13 @@ import { Types } from 'mongoose'
 import { ProductModel } from '../models'
 import { ProductToCreate } from '../types'
 
+/**
+ * 
+ * Creates a new Product in DB and return its id
+ * 
+ * @param productToCreate - ProductToCreate type
+ * @returns ObjectId - New product id
+ */
 export async function createProduct({ name, currency, price, volume, stock }: ProductToCreate): Promise<Types.ObjectId> {
     const product = await ProductModel.findOne({ name })
 
